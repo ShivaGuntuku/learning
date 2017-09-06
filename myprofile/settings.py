@@ -25,7 +25,7 @@ SECRET_KEY = '-@uwjfwmr&(0swkp=8p5%#6pxks@fvv_mhylg71s*8)qk)i#6j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['gshiva.pythonanywhere.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
