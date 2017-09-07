@@ -30,7 +30,7 @@
 <body>
 
  <body>
-		<!-- Loading animation -->
+		<!-- Loading hhnndoetvlevcrkqanimation -->
 		<div class="preloader">
 			<div class="preloader-animation">
 				<div class="dot1"></div>
@@ -645,35 +645,44 @@
 										<div class="block-title">
 											<h3>Contact Form</h3>
 										</div>
-										<form id="contact-form" method="post" action="contact_form/contact_form.php">
-
+										{% load bootstrap_tags %}
+										<form id="contact-form" method="post">
+											{% csrf_token %}
 											<div class="messages"></div>
 
 											<div class="controls">
 												<div class="form-group">
-														<input id="form_name" type="text" name="name" class="form-control" placeholder="Full Name" required="required" data-error="Name is required.">
+														{{form.subject}}
 														<div class="form-control-border"></div>
-														<i class="form-control-icon pe-7s-user"></i>
+														<!-- <i class="fa fa-user-circle"></i> -->
 														<div class="help-block with-errors"></div>
 												</div>
 
 												<div class="form-group">
-														<input id="form_email" type="email" name="email" class="form-control" placeholder="Email Address" required="required" data-error="Valid email is required.">
+														{{ form.from_email }}
 														<div class="form-control-border"></div>
-														<i class="form-control-icon pe-7s-mail"></i>
+														<!-- <i class="form-control-icon pe-7s-mail"></i> -->
 														<div class="help-block with-errors"></div>
 												</div>
 
 												<div class="form-group">
-														<textarea id="form_message" name="message" class="form-control" placeholder="Message for Me" rows="4" required="required" data-error="Please, leave me a message."></textarea>
+														{{ form.message }}
 														<div class="form-control-border"></div>
-														<i class="form-control-icon pe-7s-comment"></i>
+														<!-- <i class="form-control-icon pe-7s-comment"></i> -->
 														<div class="help-block with-errors"></div>
 												</div>
 
 												<input type="submit" class="button btn-send" value="Send message">
 											</div>
 										</form>
+										{% if messages %}
+
+    {% for message in messages %}
+
+		<div id="signup-response" class="alert-box success" {% if message.tags %} class="{{ message.tags }}"{% endif %} >{{ message }}</div>
+    {% endfor %}
+
+{% endif %}
 									</div>
 								</div>
 							</div>
