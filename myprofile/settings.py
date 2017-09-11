@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 	'django.contrib.staticfiles',
 	'django_forms_bootstrap',
 	'personalResume',
+	'myblog',
 ]
 
 MIDDLEWARE = [

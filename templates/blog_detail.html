@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block head_title %} {{ instance.title }} | {{block.super}} {% endblock head_title %}
+	
+{% block content %}
+<div class="card">
+	<div class="card-header">
+		{{title}}
+		<small>{{ instance.timestamp }}</small>
+	</div>
+	<p class="card-text">
+		{{ instance.content | linebreaks }}
+	</p>
+</div>
+
+{% endblock content %}
