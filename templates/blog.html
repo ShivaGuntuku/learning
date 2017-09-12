@@ -3,36 +3,46 @@
 
 <h1>{{ title }}</h1>
 <div class="row">
-<div class="col-sm-6">
 {% for obj in object_list %}
+<div class="col-sm-6">
 <div class="card">
 	<div class="card-header">
 		<a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a>
 		<small>Last Update {{ obj.timestamp|timesince}} ago</small>
 	</div>
+	{% if obj.image %}
+		<img src="{{ obj.image.url }}" class="img-responsive">
+	{% endif %}
 	<div class="card-body">
 		<p class="card-text">{{ obj.content|linebreaks|truncatechars:120 }}</p>
 		<a href="{{ obj.get_absolute_url }}" class="btn btn-primary" role="button">View</a>
 	</div>
 </div>
 <br/>
+</div>
+
 {% endfor %}
 </div>
-</div>
-<div class="pagination">
-    <span class="step-links">
-        {% if object_list.has_previous %}
-            <a href="?page={{ object_list.previous_page_number }}">previous</a>
-        {% endif %}
 
-        <span class="current">
-            Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
-        </span>
 
-        {% if object_list.has_next %}
-            <a href="?page={{ object_list.next_page_number }}">next</a>
-        {% endif %}
-    </span>
-</div>
+<nav aria-label="...">
+	<ul class="pagination pagination-lg">
+		<li class="page-item disabled">
+			{% if object_list.has_previous %}
+				<a href="?page={{ object_list.previous_page_number }}">previous</a>
+			{% endif %}
+		</li>
 
+		<li class="page-item">
+			Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
+		</li>
+
+		<li class="page-item">
+			{% if object_list.has_next %}
+				<a href="?page={{ object_list.next_page_number }}">next</a>
+			{% endif %}
+		</li>
+	</ul>
+<nav>
 {% endblock %}
+

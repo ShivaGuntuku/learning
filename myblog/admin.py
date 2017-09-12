@@ -4,8 +4,8 @@ from django.contrib import admin
 from .models import Posts
 
 class PostModelAdmin(admin.ModelAdmin):
-	list_display = ['title', 'updated', 'timestamp']
-	list_display_links = ['updated']
+	list_display = ['title', 'updated', 'timestamp','image']
+	list_display_links = ['title']
 	list_filter = ['updated', 'timestamp']
 	# list_editable = ['title']
 	search_fields = ['title', 'content']

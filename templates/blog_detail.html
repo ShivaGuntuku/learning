@@ -8,6 +8,9 @@
 		{{title}}
 		<small>{{ instance.timestamp }}</small>
 	</div>
+	{% if instance.image %}
+		<img src="{{ instance.image.url }}" class="img-responsive">
+	{% endif %}
 	<p class="card-text">
 		{{ instance.content | linebreaks }}
 	</p>
