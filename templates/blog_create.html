@@ -1,15 +1,12 @@
 {% extends "base.html" %}
 
 {% block head_title %} Create Post | {{block.super}} {% endblock head_title %}
-
+{% block head_extra %} {{ form.media }}{% endblock head_extra %}
 {% block content %}
-<h1>Posts Create</h1>
-<form method="POST" action="" enctype="multipart/form-data">
-{% csrf_token %}
-
-{{form.as_p}}<br/>
-
-<input type="submit" class="btn btn-primary" value="Create Post">
-</form>
-
-{% endblock %}
+	<h1>Posts Create</h1>
+	<form method="POST" action="" enctype="multipart/form-data">
+		{% csrf_token %}
+		{{form.as_p}}<br/>
+		<input type="submit" class="btn btn-primary" value="Create Post">
+	</form>
+{% endblock content %}
