@@ -4,8 +4,10 @@ from django.db import models
 from django.db.models.signals import pre_save
 from django.core.urlresolvers import reverse
 from django.utils import timezone
-
+from django.utils.safestring import mark_safe
 from django.utils.text import slugify
+
+from markdown_deux import markdown
 
 from PIL import Image
 # Create your models here.
@@ -44,6 +46,9 @@ class Posts(models.Model):
 	class Meta:
 		ordering = ["-timestamp","-updated"]
 
+	def get_markdown(self):
+		content = self.content
+		return mark_safe(markdown(content))
 	# def save(self):
 	# 	if not self.image:
 	# 		return

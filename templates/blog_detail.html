@@ -12,12 +12,12 @@
 				</div>
 				
 				
-				<p class="card-text">
+				<div class="card-text post-detail-item">
 					{% if instance.image %}
 						<img src="{{ instance.image.url }}" class="img-responsive">
 					{% endif %}
-					{{ instance.content | markdown }}
-				</p>
+				{{ instance.get_markdown }}
+				</div>
 
 			</div>
 			<div class="card-footer">

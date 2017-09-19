@@ -1,68 +1,67 @@
 {% extends 'base.html' %}
 {% block content %}
-{% load markdown_deux_tags %}
 <h1>{{ title }}</h1>
-<form method="GET" action="">
-	
-	<i class="material-icons prefix">search</i>
-	<input id="icon_prefix" type="text" name="q" placeholder="Search Posts" value="{{ request.GET.q }}" />
-	<input type="submit" value="Search" />
-
+<form method="GET" action="" class="form-inline">
+	<div class="input-group">
+		<input class="form-control" type="text" name="q" placeholder="Search Posts" value="{{ request.GET.q }}" />
+		<span class="input-group-btn">
+			<input class="btn btn-default" type="submit" value="Search" />
+		</span>
+	</div>
 </form>
 
 <div class="row">
-{% for obj in object_list %}
-<div class="col-sm-6">
-<div class="card">
+	<div class="col-sm-12">
+		<div class="card-deck">
+	{% for obj in object_list %}
+	<div class="col-sm-6">
+		<div class="card">
+			<div class="card-header">
+				<a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a><br/>
+				{% if obj.draft %} 
+					<small> Draft </small> 
+					{% if obj.publish > today %} 
+						<small> Future Post </small>
+					{% endif %} 
+				{% endif %}
+			</div>
 
-	<div class="card-header">
-		<a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a><br/>
-		{% if obj.draft %} 
-			<small> Draft </small> 
-			{% if obj.publish > today %} 
-				<small> Future Post </small>
-			{% endif %} 
-		{% endif %}
+			<div class="card-image">
+				{% if obj.image %}
+					<img src="{{ obj.image.url }}" class="img-responsive">
+				{% endif %}      
+			</div>
+			<div class="card-content post-detail-item">
+			 {{ obj.get_markdown }}
+			</div>
+			<div class="card-action text-center">
+				<a href="{{ obj.get_absolute_url }}" class="btn btn-primary" role="button">View</a>
+			</div>
+			<div class="card-footer">
+				<small class="text-muted">Last Update {{ obj.timestamp|timesince}} ago</small><br/>
+				{% if obj.user.get_full_name %}<p>Author : {{obj.user.get_full_name}}</p>{% endif %}
+			</div>
+		</div>
 	</div>
-
-	<div class="card-body">
-		{% if obj.image %}
-			<img src="{{ obj.image.url }}" class="img-responsive">
-		{% endif %}
-		<p class="card-text">{{ obj.content|markdown}}</p>
-		<a href="{{ obj.get_absolute_url }}" class="btn btn-primary" role="button">View</a>
+	{% endfor %}
 	</div>
-
-	<div class="card-footer">
-      <small class="text-muted">Last Update {{ obj.timestamp|timesince}} ago</small><br/>
-      {% if obj.user.get_full_name %}<p>Author : {{obj.user.get_full_name}}</p>{% endif %}
-    </div>
 </div>
-<br/>
 </div>
+<ul class="pagination">
+	<li class="page-item disabled">
+		{% if object_list.has_previous %}
+			<a href="?page={{ object_list.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">previous</a>
+		{% endif %}
+	</li>
 
-{% endfor %}
-</div>
+	<li class="page-item">
+		Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
+	</li>
 
-
-<nav aria-label="...">
-	<ul class="pagination pagination-lg">
-		<li class="page-item disabled">
-			{% if object_list.has_previous %}
-				<a href="?page={{ object_list.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">previous</a>
-			{% endif %}
-		</li>
-
-		<li class="page-item">
-			Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
-		</li>
-
-		<li class="page-item">
-			{% if object_list.has_next %}
-				<a href="?page={{ object_list.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">next</a>
-			{% endif %}
-		</li>
-	</ul>
-<nav>
-{% endblock %}
-
+	<li class="page-item">
+		{% if object_list.has_next %}
+			<a href="?page={{ object_list.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">next</a>
+		{% endif %}
+	</li>
+</ul>         
+{% endblock content %}
