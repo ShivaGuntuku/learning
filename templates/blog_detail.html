@@ -1,28 +1,44 @@
 {% extends "base.html" %}
-
+{% load crispy_forms_tags %}
 {% block head_title %} {{ instance.title }} | {{block.super}} {% endblock head_title %}
 	
 {% block content %}
 <!-- {% load markdown_deux_tags %} -->
 	<div class="row">
-		<div class="col-sm-6">
+		<div class="col-sm-10 col-sm-offset-2">
 			<div class="card">
 				<div class="card-header">
 					{{title}}
 				</div>
-				
-				
 				<div class="card-text post-detail-item">
 					{% if instance.image %}
 						<img src="{{ instance.image.url }}" class="img-responsive">
 					{% endif %}
-				{{ instance.get_markdown }}
+					{{ instance.get_markdown }}
 				</div>
-
 			</div>
+
 			<div class="card-footer">
 				<small class="text-muted">Last Update {{ instance.updated|timesince}} ago</small><br/>
 				<p>Author : {{instance.user.get_full_name}}</p>
+				<div>
+					<p class="lead">Comments</p>
+					<form method="POST" action=".">
+						{% csrf_token %}
+						{{ comment_form|crispy }}
+						<input type="submit" value="Post Comment" class="btn btn-default">
+					</form>
+					<hr/>
+					{% for comment in comments %}
+					<blockquote>
+						<p>{{ comment.content }}</p>
+						<footer>
+							<small>--via {{comment.user}} | {{ comment.timestamp|timesince }} ago</small>
+							</footer>
+					</blockquote>
+					<hr/>
+					{% endfor %}
+				</div>
 			</div>
 		</div>
 	</div>
