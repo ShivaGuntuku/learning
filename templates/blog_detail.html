@@ -8,7 +8,8 @@
 		<div class="col-sm-10 col-sm-offset-2">
 			<div class="card">
 				<div class="card-header">
-					{{title}}
+					{{title}}<br/>
+					<small>Read Time : {% if instance.read_time|time:'i' <= "01" %} < 1 minute {% else %}{{ instance.read_time|time:"i" }} minutes {% endif %}</small>
 				</div>
 				<div class="card-text post-detail-item">
 					{% if instance.image %}
@@ -20,7 +21,8 @@
 
 			<div class="card-footer">
 				<small class="text-muted">Last Update {{ instance.updated|timesince}} ago</small><br/>
-				<p>Author : {{instance.user.get_full_name}}</p>
+				
+				<p>Author : {{ instance.user.get_full_name }}</p>
 				<div>
 					<p class="lead">Comments</p>
 					<form method="POST" action=".">
@@ -38,7 +40,8 @@
 								{% if comment.children.count > 0 %}
 									{{ comment.children.count }}
 									Comment{% if comment.children.count > 1 %}s{% endif %} | {% endif %}
-								<a class="comment-reply-btn" href="#">Reply</a>
+								<a class="comment-reply-btn" href="#">Reply</a>|
+								<a href="{{ comment.get_absolute_url }}">Thread</a>
 							</small>
 						</footer>
 						<div class="comment-reply">
