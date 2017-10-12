@@ -51,6 +51,7 @@ INSTALLED_APPS = [
 	'personalResume',
 	'comments',
 	'myblog',
+	'accounts',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
