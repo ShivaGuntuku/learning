@@ -19,10 +19,16 @@ from django.contrib import admin
 from personalResume import views
 from django.conf import settings
 
+from accounts.views import login_view, register_view, logout_view
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^resume/',views.home,),
-    url(r'^posts/',include('myblog.urls', namespace = 'posts')),
+    url(r'^comments/',include('comments.urls', namespace = 'comments')),
+    url(r'^register/', register_view, name='register'),
+    url(r'^login/', login_view, name='login'),
+    url(r'^logout/', logout_view, name='logout'),
+    url(r'^',include('myblog.urls', namespace = 'posts')),
 ]
 
 

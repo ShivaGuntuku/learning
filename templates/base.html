@@ -18,6 +18,19 @@
 <body>
 	{% include 'messages_dispaly.html' %}
 	<div class="container">
+		<nav class="breadcrumb" style="background-color: #ff724c;">
+			<a href="{% url 'posts:list' %}">Home</a>
+			{% block post_detail_line %}
+			{% endblock %}
+
+			{% if not request.user.is_authenticated %}
+			<a class="pull-right" href="{% url 'login' %}"> Login </a>
+			<a class="pull-right" href="{% url 'register' %}"> Register &nbsp;&nbsp; </a>
+			
+			{% else %}
+			<a class="pull-right" href="{% url 'logout' %}">Logout</a>
+			{% endif %}
+		</nav>
 		{% block content %}{% endblock %}
 	</div>
 
@@ -67,6 +80,10 @@ $(document).ready(function(){
 		setTitle(newContent)
 	})
 
+	$(".comment-reply-btn").click(function(event){
+		event.preventDefault();
+		$(this).parent().parent().next(".comment-reply").fadeToggle();
+	})
 })
 </script>
 </body>

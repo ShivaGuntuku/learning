@@ -51,6 +51,7 @@ INSTALLED_APPS = [
 	'personalResume',
 	'comments',
 	'myblog',
+	'accounts',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -65,6 +66,7 @@ MIDDLEWARE = [
 	'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+LOGIN_URL = '/login/'
 ROOT_URLCONF = 'myprofile.urls'
 
 TEMPLATES = [
