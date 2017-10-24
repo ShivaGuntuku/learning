@@ -35,9 +35,9 @@ class UserRegisterForm(forms.ModelForm):
 		]
 
 	def clean_email2(self):
-		email = self.cleaned_data.get(email)
-		email2 = self.cleaned_data.get(email2)
-		if email != email2 :
+		email = self.cleaned_data.get('email')
+		email2 = self.cleaned_data.get('email2')
+		if not email == email2 :
 			raise forms.ValidationError("Emails must match")
 		email_qs = User.objects.filter(email = email)
 		if email_qs.exists():
