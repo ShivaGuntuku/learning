@@ -14,7 +14,6 @@ from comments.models import Comment
 from .utils import get_read_time
 
 from PIL import Image
-# Create your models here.
 
 class PostManager(models.Manager):
 	def active(self, *args, **kwargs):
