@@ -3,7 +3,11 @@ html {
 }
 
 .card {
-	text-align: center;
+	
+}
+.card-deck{
+	padding-right: 5px;
+	padding-left: 5px;
 }
 
 @media (max-width: 990px) {
@@ -35,4 +39,16 @@ html {
 
 .comment-reply{
 	display: none;
+}
+
+.card-content {
+	height: 250px;
+	overflow: hidden;
+	margin: 0px;
+	
+}
+
+a.card-action{
+	text-decoration: none !important;
+	color: black;
 }
