@@ -1,21 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>{{ title }}</h1>
-<form method="GET" action="" class="form-inline">
-  <div class="input-group">
-    <input class="form-control" type="text" name="q" placeholder="Search Posts"     value="{{ request.GET.q }}" />
-    <span class="input-group-btn">
-      <button class="btn btn-default" type="submit">Search <i class="fa fa-search" aria-hidden="true"></i></button>
-      </span>
-  </div>
-</form>
+<!-- <h1>{{ title }}</h1> -->
 
 <!-- Cards Styling Code -->
+<br/>
+<div class="container-fluid">
+
 <div class="row">
   <div class="col-sm-12">
     <div class="card-deck">
     {% for obj in object_list %}
-    <div class="col-sm-4">
+    <div class="col-sm-3">
       <div class="card">
         <div class="card-header text-muted text-center">
           <a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a> 
@@ -35,7 +30,7 @@
 
         <a class='card-action' href="{{ obj.get_absolute_url }}" 
             style="display:block">
-          <div class="card-content post-detail-item">
+          <div class="card-body post-detail-item">
             {{ obj.get_markdown }}
           </div>
         </a>
@@ -46,30 +41,33 @@
             {% endif %}
           </small>
         </div>
-      </div>
+      </div><br/>
     </div>
   {% endfor %}
   </div>
   </div>
 </div>
+</div>
 
 <!-- Pagination Code -->
-<ul class="pagination">
-  <li class="page-item disabled">
-    {% if object_list.has_previous %}
-      <a href="?page={{ object_list.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">previous</a>
-    {% endif %}
-  </li>
+<div class="container">
+  <ul class="pagination">
+    <li class="page-item disabled">
+      {% if object_list.has_previous %}
+        <a href="?page={{ object_list.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">previous</a>
+      {% endif %}
+    </li>
 
-  <li class="page-item">
-    Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
-  </li>
+    <li class="page-item">
+      Page {{ object_list.number }} of {{ object_list.paginator.num_pages }}.
+    </li>
 
-  <li class="page-item">
-    {% if object_list.has_next %}
-      <a href="?page={{ object_list.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">next</a>
-    {% endif %}
-  </li>
-</ul>  
+    <li class="page-item">
+      {% if object_list.has_next %}
+        <a href="?page={{ object_list.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">next</a>
+      {% endif %}
+    </li>
+  </ul>
+</div> 
        
 {% endblock content %}
