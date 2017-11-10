@@ -1,0 +1,13 @@
+Toggle button Color
+Footer Scroll with love of eg
+pagination should be change to center
+navigation bar fixed top.
+card header should be fixed and fix the card styling.
+
+read time to right side.
+Login page Hover on current page not fixed yet.
+Forgot Password Functionality
+Create Page 
+
+--Fixed Functionality --
+Article Display Page

@@ -1,9 +1,23 @@
 html {
 	font-family: GillSans, Calibri, Trebuchet, sans-serif;
 }
+body{
+	
+}
+.navbar{
+	margin-bottom: 0px;
+	padding-left: 100px !important;
+	padding-right: 100px;
+	background-color:  #2c3e50 ;
+}
+/*Navigaton Toggle Color Change or Visible*/
 
 .card {
-	text-align: center;
+	
+}
+.card-deck{
+	padding-right: 5px;
+	padding-left: 5px;
 }
 
 @media (max-width: 990px) {
@@ -35,4 +49,25 @@ html {
 
 .comment-reply{
 	display: none;
+}
+.card-header{
+	height: 50px;
+	overflow: hidden;
+}
+.card-body {
+	height: 200px;
+	overflow: hidden;
+	margin: 0px;
+}
+
+a.card-action{
+	text-decoration: none !important;
+	color: black;
+}
+
+.vertical-center{
+  height: 91vh;
+  margin-bottom: 0px;
+  text-align: center;
+  font: 0/0 a;  
 }
