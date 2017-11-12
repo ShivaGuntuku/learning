@@ -7,11 +7,13 @@
 {% endblock %}
 
 {% block content %}
+<br/>
 <!-- {% load markdown_deux_tags %} -->
   <div class="container">
     <h3>{{title}}</h3>
-    <small class="text-info">Read Time : {% if instance.read_time|time:'i' <= "01" %} < 1 minute {% else %}{{ instance.read_time|time:"i" }} minutes {% endif %}</small>  
-    <br/>
+    <h6 class="text-right">
+      <small class="text-info">Read Time : {% if instance.read_time|time:'i' <= "01" %} < 1 minute {% else %}{{ instance.read_time|time:"i" }} minutes {% endif %}</small> 
+    </h6>
     <div class="container-fluid jumbotron">
       {% if instance.image %}
         <img src="{{ instance.image.url }}" class="img-responsive">
@@ -45,7 +47,7 @@
                 {{ comment.children.count }}
                 Comment{% if comment.children.count > 1 %}s{% endif %} | 
               {% endif %}
-              <a class="comment-reply-btn" href="#">Reply</a>|
+              <!--<a class="comment-reply-btn" href="#">Reply</a>| -->
               <a href="{{ comment.get_absolute_url }}">Thread</a>
             </small>
           </footer>
