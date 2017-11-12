@@ -1,16 +1,33 @@
 html {
-	font-family: GillSans, Calibri, Trebuchet, sans-serif;
+	font-family: Liberation Sans GillSans, Calibri, Trebuchet, sans-serif;
 }
 body{
 	
 }
+.content {margin-top: 55px;}
+
 .navbar{
-	margin-bottom: 0px;
-	padding-left: 100px !important;
-	padding-right: 100px;
+	margin-bottom: 0;
+	padding-left: 50px !important;
+	padding-right: 50px;
+	/*border-bottom: 0.5px solid;*/
 	background-color:  #2c3e50 ;
 }
 /*Navigaton Toggle Color Change or Visible*/
+.nav-item{
+	padding-left: 15px;
+}
+.navbar-brand{
+	color:#FF5733;
+  font-variant: small-caps;
+  font-weight: bold;
+}
+
+#navbarNavDropdown ul li a {
+  color:#FF5733;
+  font-variant: small-caps;
+  font-weight: bold;
+}
 
 .card {
 	
@@ -70,4 +87,8 @@ a.card-action{
   margin-bottom: 0px;
   text-align: center;
   font: 0/0 a;  
+}
+#id_content{
+	/*height: 100px;*/
+	/*overflow: scroll;*/
 }

@@ -2,17 +2,17 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-	<div class="jumbotron vertical-center">
-		<div class="container">
-    <div class='col-sm-6 col-sm-offset-3'>
+  <div class="jumbotron vertical-center">
+    <div class="container">
+      <div class='col-sm-6 col-sm-offset-3'>
         <h1>{{ title }} </h1>
         <hr/>
         <form  method="POST" action="" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form|crispy }}
-            <input type="submit" class="btn btn-default" value="{{ title }}">
+          {% csrf_token %}
+          {{ form|crispy }}
+          <input type="submit" class="btn btn-default" value="{{ title }}">
         </form>
+      </div>
     </div>
-  </div>
   </div>
 {% endblock content %}
