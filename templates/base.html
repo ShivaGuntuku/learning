@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" type="text/css"> -->
     <link rel="stylesheet" href="{% static 'css/blog.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/blog_list_index.css' %}" type="text/css">
 </head>
 
 {% block head_extra %} {% endblock head_extra %}
@@ -42,18 +43,18 @@
           </li> -->
         </ul>
         <ul class="navbar-nav">
-          {% if not request.user.is_authenticated %}
+          <!-- {% if not request.user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'login' %}">Login</a>
-          </li>
-          <li class="nav-item">
+          </li> -->
+          <!-- <li class="nav-item">
             <a class="nav-link" href="{% url 'register' %}">Register</a>
-          </li>    
-          {% else %}
+          </li>  -->   
+          <!-- {% else %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}">Logout</a>
           </li>
-          {% endif %}
+          {% endif %} -->
           <li class="nav-item">
             <form method="GET" action="" class="form-inline my-2 my-lg-0">
               <input class="form-control" type="text" name="q"  placeholder="Search Posts"  value="{{ request.GET.q }}" />

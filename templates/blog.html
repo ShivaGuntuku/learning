@@ -4,49 +4,30 @@
 
 <!-- Cards Styling Code -->
 <br/>
-<div class="container">
-<div class="row">
-  <div class="col-sm-12">
-    <div class="card-deck">
+<!-- Display code -->
+<main role='main'>
+  <ol class="timeline">
     {% for obj in object_list %}
-    <div class="col-sm-4">
-      <div class="card">
-        <div class="card-header text-muted text-center">
-          <a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a> 
-            {% if obj.draft %} 
-            <small> Draft </small> 
-              {% if obj.publish > today %} 
-                <small> Future Post </small>
-              {% endif %} 
-            {% endif %}
-        </div>
-
-        <div class="card-image">
-          {% if obj.image %}
-            <img src="{{ obj.image.url }}" class="img-responsive">
-          {% endif %}      
-        </div>
-
-        <a class='card-action' href="{{ obj.get_absolute_url }}" 
-            style="display:block">
-          <div class="card-body post-detail-item">
-            {{ obj.get_markdown }}
-          </div>
-        </a>
-        <div class="card-footer text-muted">
-          <small>Last Update {{ obj.timestamp|timesince}} ago
-            {% if obj.user.get_full_name %} 
-              || Author : {{obj.user.get_full_name}}
-            {% endif %}
-          </small>
-        </div>
-      </div><br/>
-    </div>
-  {% endfor %}
-  </div>
-  </div>
-</div>
-</div>
+    <li>
+        <a class="timeline-title" href="{{ obj.get_absolute_url }}">{{ obj.title }}</a>
+      {% if obj.draft %} 
+        <small> Draft </small> 
+          {% if obj.publish > today %} 
+            <small> Future Post </small>
+          {% endif %} 
+      {% endif %}
+      <h6>Last Update: {{ obj.timestamp|date}}</h6>
+      <h6>
+        {% if obj.user.get_full_name %} 
+        Author : {{obj.user.get_full_name}}
+        {% endif %}
+      </h6>
+    <!-- </a> -->
+      <button aria-label='Hi'></button>
+    </li>
+    {% endfor %}
+  </ol>
+</main>
 
 <!-- Pagination Code -->
 <div class="container">
