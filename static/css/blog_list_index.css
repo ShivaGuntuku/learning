@@ -1,3 +1,29 @@
+/*body{
+  background: #efeff3; 
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  color:#212121;
+}*/
+html,
+body {
+  margin: 0;
+}
+
+body {
+  padding: 30px 0;
+  color: #4b4b48;
+  font-family: Avenir Next, Helvetica Neue, sans-serif;
+  background-color: #f6f5f0;
+}
+
+h1 {
+  margin: 0 60px;
+  color: #7b7b77;
+  font-size: 5vw;
+  font-weight: 100;
+  text-align: center;
+}
+
 ol.timeline {
   position: relative;
   margin: 30px 10vw;
@@ -21,7 +47,7 @@ ol.timeline::before {
   bottom: 0;
   width: 3px;
   transform: translateX(-50%);
-  background-color: #e7e6e0;
+  background-color:  #ff5733 ;
 }
 @media (min-width: 600px) {
   ol.timeline::before {
@@ -39,7 +65,7 @@ ol.timeline > li {
   hyphenate-limit-lines: 1;
   hyphenate-limit-last: always;
   text-align: justify;
-  background-color: #edece7;
+  background-color: #fdfefe;
 }
 ol.timeline > li time {
   display: block;
@@ -154,4 +180,10 @@ ol.timeline > li + li {
 
 .timeline-title{
   font-size: 30px;
+}
+
+.timeline-author, .timeline-time{
+  color:#9e9e9e;
+  margin-top:10px;
+  font-size:14px;
 }

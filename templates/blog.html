@@ -16,8 +16,8 @@
             <small> Future Post </small>
           {% endif %} 
       {% endif %}
-      <h6>Last Update: {{ obj.timestamp|date}}</h6>
-      <h6>
+      <h6 class="timeline-time">Last Update: {{ obj.timestamp|date}}</h6>
+      <h6 class="timeline-author">
         {% if obj.user.get_full_name %} 
         Author : {{obj.user.get_full_name}}
         {% endif %}
@@ -30,7 +30,7 @@
 </main>
 
 <!-- Pagination Code -->
-<div class="container">
+<!-- <div class="container">
   <ul class="pagination">
     <li class="page-item disabled">
       {% if object_list.has_previous %}
@@ -48,6 +48,6 @@
       {% endif %}
     </li>
   </ul>
-</div> 
+</div>  -->
        
 {% endblock content %}

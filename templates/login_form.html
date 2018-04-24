@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-  <div class="jumbotron vertical-center">
+  <!-- <div class="jumbotron vertical-center">
     <div class="container">
       <div class='col-sm-6 col-sm-offset-3'>
         <h1>{{ title }} </h1>
@@ -14,5 +14,50 @@
         </form>
       </div>
     </div>
+  </div> -->
+
+  <div class="page-transition"></div>
+
+<div class="container">
+  
+  <div class="formHolder signup">
+    <h3>Sign Up</h3>
+    
+    <div class="form-group">
+        <input type="text" class="form-control simplebox" id="login" placeholder="E-mail">
+    </div>
+      
+    <div class="form-group">
+        <input type="password" class="form-control simplebox" id="password" placeholder="Password">
+    </div>
+    
+    <div class="form-group">
+        <input type="password" class="form-control simplebox" id="password" placeholder="Confirm Password">
+    </div>
+    
+    <button type="submit" id="signupButton" class="btn btn-sm btn-default simplebutton newAccButton">Sign Up</button><button type="submit" class="btn btn-sm btn-link loginButton" id="showLogin">Already have an account?</button>
+    
   </div>
+  
+  <div class="formHolder login">
+    
+      <h3>Login</h3>
+      
+      <div class="form-group">
+        <input type="text" class="form-control simplebox" id="login" placeholder="E-mail">
+      </div>
+      
+      <div class="form-group">
+        <input type="password" class="form-control simplebox" id="password" placeholder="Password">
+      </div>
+      
+      <button type="submit" id="loginButton" class="btn btn-sm btn-default simplebutton loginButton">Login</button><button type="submit" class="btn btn-sm btn-link newAccButton" id="showSignUp">Don't have an account?</button>
+    
+  </div>
+  
+  <div class="formHolder signUp">
+    
+  </div>
+  
+</div>
 {% endblock content %}
