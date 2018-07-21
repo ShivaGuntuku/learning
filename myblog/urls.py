@@ -2,6 +2,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from myblog.views import post_create,post_detail,post_list,post_update,post_delete
 
+app_name="myblog"
 
 urlpatterns = [
     url(r'^$',post_list, name='list'),
